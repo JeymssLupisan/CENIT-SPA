@@ -1,0 +1,380 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #EFCCAC;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar {
+    width: 60px;
+    background-color: #321B11;
+    color: white;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar:hover {
+    width: 250px;
+}
+
+.sidebar-header {
+    padding: 20px;
+    text-align: center;
+}
+
+.sidebar-header h2 {
+    font-size: 20px;
+    color: #EFCCAC;
+}
+
+.sidebar-links {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 50px;
+}
+
+.sidebar-links li {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.sidebar-links li a {
+    color: #EFCCAC;
+    font-size: 24px;
+    display: block;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.sidebar-links li a:hover {
+    background-color: #DDB5A1;
+    color: white;
+    border-radius: 8px;
+    padding: 15px 20px;
+}
+
+.content-section {
+    flex: 1;
+    margin-left: 60px;
+    padding: 20px;
+    overflow: auto;
+}
+
+h1, h2, h3 {
+    color: #321B11;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 24px;
+    color: #321B11;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.recent-activity-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.recent-activity-box {
+    background: rgba(39, 39, 39, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 46%;
+    height: auto;
+    text-align: center;
+}
+
+.table-wrapper {
+    max-height: 160px
+    overflow-y: auto;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+thead {
+    background-color: #f1f1f1;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.recent-activity-box h3 {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.recent-activity-box p {
+    font-size: 16px;
+    color: #fff;
+}
+
+.overview-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+.overview-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.overview-box h3 {
+    font-size: 20px;
+    color: #321B11;
+    margin-bottom: 10px;
+}
+
+.overview-box p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #321B11;
+}
+
+.table-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#adminSearch, #userSearch, #appointmentSearch, #serviceSearch, #therapistSearch, #availabilitySearch {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: max-width 0.4s ease-in-out;
+}
+
+#adminSearch:focus, #userSearch:focus, #appointmentSearch:focus, #serviceSearch:focus, #therapistSearch:focus,
+#availabilitySearch:focus {
+    max-width: 400px;
+    outline: none;
+    border-color: #f5a623;
+}
+
+.recent-activities {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+thead {
+    background-color: #f1f1f1;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.add-button {
+    background-color: #321B11;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 20px;
+    transition: background-color 0.3s;
+}
+
+.add-button:hover {
+    background-color: #f5a623;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+}
+
+th {
+    background-color: #321B11;
+    color: white;
+    font-weight: bold;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.update-button, .delete-button {
+    padding: 6px 12px;
+    border: none;
+    background-color: #321B11;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 5px;
+    transition: background-color 0.3s;
+}
+
+.update-button:hover {
+    background-color: #f5a623;
+}
+
+.delete-button:hover {
+    background-color: #e74c3c;
+}
+
+.logout-button {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    background-color: #321B11;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+    z-index: 1000;
+}
+
+.logout-button:hover {
+    background-color: #f5a623;
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 60px;
+    }
+
+    .sidebar-header h2 {
+        display: none;
+    }
+
+    .sidebar-links li a {
+        font-size: 20px;
+        padding: 15px 10px;
+    }
+
+    .sidebar-links li {
+        margin: 20px 0;
+    }
+
+    .content-section {
+        margin-left: 60px;
+        margin-top: 50px;
+    }
+
+    .recent-activity-container,
+    .overview-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .recent-activity-box,
+    .overview-box {
+        flex: 1 1 100%;
+    }
+
+    .table-container {
+        margin: 20px 0;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    .update-button, .delete-button {
+        padding: 4px 8px;
+    }
+
+    .add-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .recent-activity-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .recent-activity-box {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

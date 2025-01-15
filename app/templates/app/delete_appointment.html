@@ -1,0 +1,34 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/delete.css' %}">
+    <title>Delete Appointment</title>
+</head>
+{% block content %}
+    <div class="overlay">
+        <div class="form-container">
+            <div class="header">
+                <h1>Deleting Appointment</h1>
+                <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">
+                    <i class='bx bx-arrow-back'></i>
+                </a>
+            </div>
+            <p class="intro-text">Are you sure you want to delete this appointment "<strong>{{ appointment.service.name }}</strong>"?</p>
+            <div class="admin-info">
+                <p><strong>Customer:</strong> {{ appointment.customer.name }}</p>
+                <p><strong>Therapist:</strong> {{ appointment.therapist.name }}</p>
+                <p><strong>Date:</strong> {{ appointment.date }}</p>
+            </div>
+            <form action="{% url 'appointment_delete' appointment.pk %}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Confirm" class="confirm-button">
+            </form>
+        </div>
+    </div>
+    <script>
+        function confirmBack() {
+            return confirm("Are you sure you want to go back? Any unsaved changes will be lost.");
+        }
+    </script>
+{% endblock content %}

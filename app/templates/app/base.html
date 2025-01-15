@@ -1,15 +1,107 @@
 <!DOCTYPE html>
-{%load static %}
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <title>Login & Register</title>
 </head>
 <body>
-    {% include 'app/navbar.html' %}
-    {% block content %}
-    {% endblock content%}
-    <script src="{% static 'js/base.js' %}"></script>
+<div class="wrapper">
+    <nav class="nav">
+        <div class="nav-logo">
+            <p>CENIT SPA</p>
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="/home" class="link active">Home</a></li>
+                <li><a href="/about" class="link">About</a></li>
+                <li><a href="/service" class="link">Services</a></li>
+                <li><a href="/contact" class="link">Contact</a></li>
+            </ul>
+        </div>
+        <div class="nav-button">
+            <button class="btn white-btn" id="loginBtn" onclick="login()">Sign In</button>
+            <button class="btn" id="registerBtn" onclick="register()">Sign Up</button>
+        </div>
+        <div class="nav-menu-btn">
+            <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+        </div>
+    </nav>
+
+    <div class="form-box">
+        <div class="login-container" id="login">
+            <header>Customer Login</header>
+            <p class="form-description">Log in and stay connected with your account, where all your activities are organized in one place.</p>
+            <form method="post" action="{% url 'customer_login' %}">
+                {% csrf_token %}
+                <div class="input-box">
+                    <input type="text" id="username" name="username" class="input-field" placeholder="Username" required>
+                    <i class="bx bx-user"></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="password" name="password" class="input-field" placeholder="Password" required>
+                    <i class="bx bx-lock-alt"></i>
+                </div>
+                <div class="input-box">
+                    <input type="submit" class="submit" value="Sign In">
+                </div>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="error-message">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            </form>
+            <div class="two-col">
+                <div class="one">
+                    <input type="checkbox" id="login-check">
+                    <label for="login-check">Remember Me?</label>
+                </div>
+                <div class="two">
+                    <label><a href="{% url 'admin_login' %}">Login as Admin</a></label>
+                </div>
+            </div>
+            <div class="account-link">
+                <p>Don't have an account with us?</p>
+                <a href="#" onclick="register()">Register</a>
+            </div>
+        </div>
+
+        <div class="register-container" id="register">
+            <header>Register</header>
+            <p class="form-description">Fill in the details to create an account.</p>
+            <form method="POST" action="{% url 'register_customer' %}">
+                {% csrf_token %}
+                <div class="input-box">
+                    <i class="bx bx-user"></i>
+                    <input type="text" name="name" class="input-field" placeholder="Name" required>
+                </div>
+                <div class="input-box">
+                    <i class="bx bx-user"></i>
+                    <input type="text" name="username" class="input-field" placeholder="Username" required>
+                </div>
+                <div class="input-box">
+                    <i class="bx bx-envelope"></i>
+                    <input type="email" name="email" class="input-field" placeholder="Email" required>
+                </div>
+                <div class="input-box">
+                    <i class="bx bx-lock-alt"></i>
+                    <input type="password" name="password" class="input-field" placeholder="Password" required>
+                </div>
+                <div class="input-box">
+                    <input type="submit" class="submit" value="Register">
+                </div>
+            </form>
+            <div class="account-link">
+                <p>Have an existing account?</p>
+                <a href="#" onclick="login()">Login</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/base.js' %}"></script>
 </body>
 </html>

@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background: #B17457;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    position: relative;
+    padding: 1rem;
+    background-color: #EFCCAC;
+    color: #321B11;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border: solid #321B11 3px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #321B11;
+    font-size: 2.5rem;
+}
+
+.availability-section, .booking-form-section {
+    margin-bottom: 3rem;
+}
+
+h2 {
+    margin-bottom: 1rem;
+    color: #321B11;
+    font-size: 1.8rem;
+}
+
+p {
+    text-align: center;
+}
+
+.availability-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    border: solid #321B11 3px;
+}
+
+.availability-table th, .availability-table td {
+    padding: 1rem;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.availability-table th {
+    background-color: #EFCCAC;
+    color: #321B11;
+    font-weight: bold;
+}
+
+.availability-table td {
+    background-color: #fff;
+}
+
+.booking-form {
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: solid #321B11 3px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #321B11;
+}
+
+input, select {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: #321B11;
+    outline: none;
+}
+
+button.btn-submit {
+    background-color: #321B11;
+    color: white;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    width: 100%;
+    font-size: 1.1rem;
+    border: none;
+    margin-top: 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+button.btn-submit:hover {
+    background-color: #DDB5A1;
+}
+
+button.btn-back {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #DDB5A1;
+    color: #321B11;
+    cursor: pointer;
+    padding: 0.50rem 1rem;
+    font-size: 1.5rem;
+    border: solid #fff 2px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+button.btn-back:hover {
+    background-color: #321B11;
+    color: white;
+}
+
+.alert {
+    padding: 1rem;
+    background-color: red;
+    color: #fff;
+    border-radius: 4px;
+    margin-top: 2rem;
+}
+
+.alert p {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .availability-table th, .availability-table td {
+        padding: 0.8rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .booking-form {
+        padding: 1.5rem;
+    }
+
+    button.btn-submit {
+        width: 100%;
+    }
+}

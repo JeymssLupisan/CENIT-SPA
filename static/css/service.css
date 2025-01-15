@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #B17457;
+}
+
+.container {
+    min-height: 100vh;
+    width: 100%;
+    background-color: #B17457;
+}
+
+.service-wrapper {
+    padding: 5% 8%;
+}
+
+.service {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #321B11;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #DDB5A1;
+    width: 60%;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 42px;
+}
+
+.card {
+    height: 370px;
+    width: 370px;
+    background-color: #321B11;
+    padding: 3% 8%;
+    border-radius: 8px;
+    transition: 0.6s;
+    border: 1px solid #DDB5A1;
+}
+
+.card i {
+    color: #DDB5A1;
+    margin-bottom: 15px;
+    font-size: 2.5rem;
+}
+
+.card h2 {
+    color: #EFCCAC;
+    font-size: 20px;
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 5px;
+    margin: 15px 0;
+    height: 70%;
+    transition: transform 0.3s ease;
+}
+
+.card p {
+    text-align: left;
+    margin: 10px 0;
+    color: #DDB5A1;
+}
+
+.card:hover {
+    background: linear-gradient(90deg, #EFCCAC, #DDB5A1);
+    transform: translateY(-8px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover i,
+.card:hover h2,
+.card:hover p {
+    color: #321B11;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #DDB5A1;
+    color: #321B11;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #DDB5A1;
+    color: #321B11;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.cta-button:hover {
+    background-color: #EFCCAC;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.modal-content h2 {
+    color: #321B11;
+}
+
+.modal-content p {
+    color: #4A3A35;
+    margin: 0;
+    width: 100%;
+    line-height: 1.8;
+    text-align: center;
+}
+
+
+.modal-content .cta-button {
+    background-color: #DDB5A1;
+    color: #321B11;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content .cta-button:hover {
+    background-color: #EFCCAC;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background-color: #EFCCAC;
+}
+
+@media (max-width: 1200px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+    h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    p {
+        width: 90%;
+    }
+}
+
+@media (max-width: 500px) {
+    .card {
+        height: 300px;
+        width: 300px;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    p {
+        width: 100%;
+    }
+}

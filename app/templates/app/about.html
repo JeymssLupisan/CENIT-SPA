@@ -1,5 +1,42 @@
-{% extends 'app/base.html' %}
-
-{% block content%}
-<h1>ABOUT PAGE</h1>
-{% endblock content%}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+<header>
+    {% include 'app/navbar.html' %}
+</header>
+    <div class="about-us">
+        <div class="container">
+            <div class="content">
+                <div class="text-section">
+                    <h3>Welcome to CENIT SPA</h3>
+                    <div class="about-text">
+                        <p>At CENIT SPA, we believe in the transformative power of relaxation and self-care.
+                            Nestled in a tranquil setting, our spa offers a sanctuary where you can escape the
+                            stresses of daily life and rejuvenate your mind, body, and spirit.
+                            Our dedicated team of highly skilled therapists and wellness experts is committed to
+                            providing you with personalized services tailored to your unique needs.
+                            From soothing massages to revitalizing facials, every treatment is designed to enhance
+                            your well-being and leave you feeling refreshed.
+                        </p>
+                    </div>
+                    <div class="social-links">
+                        <a href=""><i class='bx bxl-facebook-circle'></i></a>
+                        <a href=""><i class='bx bxl-github'></i></a>
+                        <a href=""><i class='bx bxl-tiktok'></i></a>
+                    </div>
+                </div>
+                <div class="image-section">
+                    <img src="{% static '/images/logo/logo.png' %}" alt="CENIT SPA Logo">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

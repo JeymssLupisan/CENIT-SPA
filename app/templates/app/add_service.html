@@ -1,0 +1,53 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/add.css' %}">
+    <title>Service Form</title>
+</head>
+{% block content %}
+    <div class="form-container">
+        <div class="header">
+            <h1>Service Form</h1>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();"><i class='bx bx-arrow-back'></i></a>
+        </div>
+        <p class="intro-text">Please fill in the details below to add a new service.</p>
+        <form id="adminForm" action="{% url 'create_service' %}" method="post" enctype="multipart/form-data" onsubmit="return validateFile();">
+            {% csrf_token %}
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            {% for error in form.name.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" placeholder="Write a brief description..."></textarea>
+            {% for error in form.description.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="duration">Duration:</label>
+            <input type="text" id="duration" name="duration" placeholder="3600 = 1hr">
+            {% for error in form.duration.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price">
+            {% for error in form.price.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image" accept="image/jpeg, image/png, image/jpg">
+            {% for error in form.image.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+            <input type="submit" value="Save">
+        </form>
+    </div>
+
+    <!-- Javascript -->
+    <script src="{% static '/js/validation.js' %}"></script>
+{% endblock content %}

@@ -1,0 +1,310 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #EFCCAC;
+    margin: 0;
+    padding: 0;
+}
+
+.form-container {
+    width: 50%;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 24px;
+    color: #321B11;
+    margin-bottom: 15px;
+}
+
+.back-button {
+    font-size: 20px;
+    color: #DDB5A1;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #321B11;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #DDB5A1;
+    color: #321B11;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-size: 16px;
+    color: #321B11;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #DDB5A1;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #321B11;
+    outline: none;
+}
+
+small {
+    font-size: 12px;
+    color: red;
+    margin-top: 5px;
+}
+
+input[type="number"],
+input[type="datetime-local"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #DDB5A1;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    color: #321B11;
+    font-size: 1em;
+}
+
+input[type="datetime-local"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #DDB5A1;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    color: #321B11;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+input[type="datetime-local"]:focus {
+    border-color: #321B11;
+    background-color: #FFF;
+    outline: none;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    background-color: #DDB5A1;
+    border-radius: 5px;
+}
+
+input[type="number"]:focus,
+input[type="datetime-local"]:focus,
+select:focus {
+    border-color: #321B11;
+    outline: none;
+}
+
+button {
+    padding: 12px 20px;
+    background-color: #321B11;
+    color: white;
+    border: none;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #DDB5A1;
+}
+
+small {
+    font-size: 12px;
+    color: red;
+    margin-top: 5px;
+    display: block;
+}
+
+.time-error {
+    font-size: 12px;
+    color: red;
+    margin-top: 5px;
+    display: block;
+}
+
+.form-group textarea,
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #DDB5A1;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #321B11;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-group input[type="file"] {
+    padding: 5px;
+}
+
+.form-group textarea:focus,
+.form-group input[type="file"]:focus {
+    border-color: #DDB5A1;
+}
+
+input[type="time"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #DDB5A1;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    color: #321B11;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input[type="time"]:focus {
+    border-color: #321B11;
+    background-color: #FFF;
+    outline: none;
+}
+
+input[type="time"]:hover {
+    border-color: #EFCCAC;
+    background-color: #EFCCAC;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    background-color: #DDB5A1;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.time-error {
+    font-size: 12px;
+    color: red;
+    margin-top: 5px;
+    display: block;
+}
+
+input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #DDB5A1;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    color: #321B11;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input[type="date"]:focus {
+    border-color: #321B11;
+    background-color: #FFF;
+    outline: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background-color: #DDB5A1;
+    border-radius: 5px;
+}
+
+input[type="date"]::placeholder {
+    color: #DDB5A1;
+    opacity: 1;
+}
+
+input[type="date"]:hover {
+    border-color: #EFCCAC;
+    background-color: #FFF5E1;
+}
+
+.error-list {
+    list-style-type: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: #f44336;
+    color: white;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.error-list li {
+    margin-bottom: 5px;
+}
+
+.errors {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.errors li {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form .invalid-feedback {
+    display: block;
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+form .is-invalid {
+    border-color: #dc3545;
+}
+
+@media screen and (max-width: 768px) {
+    .form-container {
+        width: 80%;
+        padding: 20px;
+    }
+
+    .header h1 {
+        font-size: 20px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+}

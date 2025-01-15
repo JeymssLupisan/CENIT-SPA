@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-image: url("/static/images/base/bg.jpg");
+    background-size: cover;
+    color: #321B11;
+    overflow: hidden;
+}
+
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hero-content h1 {
+    font-size: clamp(36px, 5vw, 60px);
+    margin-bottom: 20px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-radius: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hero-content p {
+    font-size: clamp(16px, 2.5vw, 20px);
+    margin-bottom: 30px;
+    line-height: 1.8;
+    max-width: 600px;
+    padding: 30px;
+    margin-left: 80px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #DDB5A1;
+    color: #321B11;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    background-color: #321B11;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 15px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(28px, 6vw, 48px);
+    }
+
+    .hero-content p {
+        font-size: clamp(14px, 2.5vw, 18px);
+        margin: 0;
+    }
+
+    .btn-primary {
+        font-size: 16px;
+        padding: 12px 25px;
+    }
+}

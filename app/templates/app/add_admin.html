@@ -1,0 +1,52 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/add.css' %}">
+    <title>Admin Form</title>
+</head>
+{% block content %}
+    <div class="form-container">
+        <div class="header">
+            <h1>Admin Form</h1>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();"><i class='bx bx-arrow-back'></i></a>
+        </div>
+        <p class="intro-text">Please fill in the details below to add new admin.</p>
+        <form id="adminForm" action="{% url 'create_admin' %}" method="post" onsubmit="return validatePasswords();">
+            {% csrf_token %}
+            <label for="firstname">Firstname:</label>
+            <input type="text" id="firstname" name="firstname">
+            {% for error in form.firstname.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="lastname">Lastname:</label>
+            <input type="text" id="lastname" name="lastname">
+            {% for error in form.lastname.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            {% for error in form.username.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email">
+            {% for error in form.email.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="password">Password:</label>
+            <input type="text" id="password" name="password">
+            {% for error in form.password.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+            <input type="submit" value="Save">
+        </form>
+    </div>
+
+    <!-- Javascript -->
+    <script src="{% static '/js/validation.js' %}"></script>
+{% endblock content %}

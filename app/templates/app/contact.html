@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Page</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/contact.css' %}">
+</head>
+<body>
+<header>
+    {% include 'app/navbar.html' %}
+</header>
+    <section id="section-wrapper">
+        <div class="box-wrapper">
+            <div class="info-wrap">
+                <h2 class="info-title">Contact Information</h2>
+                <h3 class="info-sub-title">If you have inquiries and want to contact us, fill up the forms or contact us to our social media account.</h3>
+                <ul class="info-details">
+                    <li>
+                        <i class='bx bxs-phone'></i>
+                        <span>Phone: </span><a href="tel+123456789">123456789</a>
+                    </li>
+                    <li>
+                        <i class='bx bx-envelope' ></i>
+                        <span>Email: </span><a href="mailto:@cenitspa@gmail.com">cenitspa@gmail.com</a>
+                    </li>
+                    <li>
+                        <i class='bx bx-globe' ></i>
+                        <span>Website: </span><a href="#">cenitspa.com</a>
+                    </li>
+                </ul>
+                <ul class="social-icons">
+                    <li>
+                        <a href=""><i class='bx bxl-facebook-circle'></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class='bx bxl-github'></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class='bx bxl-tiktok'></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="form-wrap">
+                <form action="#">
+                    <h2 class="form-title">Send us a message.</h2>
+                    <div class="form-fields">
+                        <div class="form-group">
+                            <input type="text" class="fname" placeholder="Firstname">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="lname" placeholder="Lastname">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="phone" placeholder="Phone">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" id="" placeholder="Write a brief message..."></textarea>
+                        </div>
+                    </div>
+                    <input type="submit" value="Send" class="submit-button">
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

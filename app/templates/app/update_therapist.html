@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/update.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Update Therapist</title>
+</head>
+<body>
+   <div class="form-container">
+    <div class="header">
+        <h1>Update Therapist</h1>
+        <a href="{% url 'database' %}" class="back-button" onclick="return confirm('Are you sure you want to go back?');"><i class='bx bx-arrow-back'></i></a>    </div>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name:</label>
+            {{ form.name }}
+        </div>
+        <div class="form-group">
+            <label for="max_daily_appointments">Max Daily Appointments:</label>
+            {{ form.max_daily_appointments }}
+        </div>
+        <div class="form-group">
+            <label for="working_hours_start">Working Hours Start:</label>
+            {{ form.working_hours_start }}
+        </div>
+        <div class="form-group">
+            <label for="working_hours_end">Working Hours End:</label>
+            {{ form.working_hours_end }}
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            {{ form.description }}
+        </div>
+        <div class="form-actions">
+            <button type="submit">Update Therapist</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

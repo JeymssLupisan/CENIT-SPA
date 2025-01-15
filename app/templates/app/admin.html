@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admin.css' %}">
+    <title>Admin Dashboard</title>
+</head>
+<body onload="showDashboard()">
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2><p><strong>Admin:</strong> {{ admin_firstname }}</p></h2>
+            </div>
+            <ul class="sidebar-links">
+                <li><a href="#" onclick="showSection('dashboard')" class="icon-link"><i class="bx bx-home"></i></a></li>
+                <li><a href="#" onclick="showSection('admins')" class="icon-link"><i class="bx bxs-user"></i></a></li>
+                <li><a href="#" onclick="showSection('users')" class="icon-link"><i class="bx bx-user"></i></a></li>
+                <li><a href="#" onclick="showSection('appointments')" class="icon-link"><i class="bx bx-book"></i></a></li>
+                <li><a href="#" onclick="showSection('services')" class="icon-link"><i class='bx bx-wrench'></i></a></li>
+                <li><a href="#" onclick="showSection('therapists')" class="icon-link"><i class="bx bx-briefcase"></i></a></li>
+                <li><a href="#" onclick="showSection('availability')" class="icon-link"><i class='bx bxs-bookmark'></i></a></li>
+            </ul>
+        </div>
+
+        <section id="dashboard" class="content-section">
+            <h1>Welcome to the Admin Dashboard <a href="/" class="logout-button" onclick="return confirmLogout()"><i class='bx bx-log-out'></i></a></h1>
+            <h2>Dashboard Summary</h2>
+            <div class="recent-activity-container">
+                <div class="recent-activity-box">
+                    <h3>Recent Appointment</h3>
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                                <th>Service</th>
+                                <th>Therapist</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for appointment in appointments%}
+                                <tr>
+                                    <td>{{ appointment.customer.name}}</td>
+                                    <td>{{ appointment.service}}</td>
+                                    <td>{{ appointment.therapist.name}}</td>
+                                    <td>{{ appointment.date }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="recent-activity-box">
+                    <h3>New Users</h3>
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Date Created</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.name }}</td>
+                                <td>{{ user.created_at }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="overview-container">
+                <div class="overview-box">
+                    <h3>Total Admins</h3>
+                    <p>{{ admins|length }}</p>
+                </div>
+                <div class="overview-box">
+                    <h3>Total Users</h3>
+                    <p>{{ users|length }}</p>
+                </div>
+                <div class="overview-box">
+                    <h3>Total Appointments</h3>
+                    <p>{{ appointments|length }}</p>
+                </div>
+                <div class="overview-box">
+                    <h3>Total Therapists</h3>
+                    <p>{{ therapists|length }}</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admins Section -->
+        <section id="admins" class="content-section" style="display: none;">
+            <h1>Admin Management <a href="/" class="logout-button" onclick="return confirmLogout()"><i class='bx bx-log-out'></i></a></h1>
+            <h2>Manage the Admins of the System</h2>
+            <div class="table-container">
+                <div class="search-container">
+                    <input type="text" id="adminSearch" placeholder="Search Admins..." onkeyup="searchAdmins()">
+                    <button class="add-button" onclick="window.location.href='{% url 'create_admin' %}'">Add Admin</button>
+                </div>
+                <h3>Admin List</h3>
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminTableBody">
+                        {% for admin in admins %}
+                        <tr>
+                            <td>{{ admin.id }}</td>
+                            <td>{{ admin.firstname }}</td>
+                            <td>{{ admin.lastname }}</td>
+                            <td>{{ admin.username }}</td>
+                            <td>{{ admin.email}}</td>
+                            <td>{{ admin.password}}</td>
+                            <td>
+                                <button class="update-button" onclick="window.location.href='{% url 'update_admin' admin.pk %}'">Update</button>
+                                <button class="delete-button" onclick="window.location.href='{% url 'admin_delete' admin.pk %}'">Delete</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Users Section -->
+        <section id="users" class="content-section" style="display: none;">
+            <h1>User Management <a href="/" class="logout-button" onclick="return confirmLogout()"><i class='bx bx-log-out'></i></a></h1>
+            <h2>Manage the Users of the System</h2>
+            <div class="table-container">
+                <div class="search-container">
+                    <input type="text" id="userSearch" placeholder="Search Users..." onkeyup="searchUsers()">
+                    <button class="add-button" onclick="window.location.href='{% url 'create_user' %}'">Add User</button>
+                </div>
+                <h3>User List</h3>
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Loyalty Points</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userTableBody">
+                        {% for user in users %}
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.password }}</td>
+                            <td>{{ user.loyalty_points }}</td>
+                            <td>
+                                <button class="update-button" onclick="window.location.href='{% url 'update_user' user.pk %}'">Update</button>
+                                <button class="delete-button" onclick="window.location.href='{% url 'user_delete' user.pk %}'">Delete</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Appointments Section -->
+        <section id="appointments" class="content-section" style="display: none;">
+            <h1>Appointment Management <a href="/" class="logout-button" onclick="return confirmLogout()"><i class='bx bx-log-out'></i></a></h1>
+            <h2>Manage the Appointments</h2>
+            <div class="table-container">
+                <div class="search-container">
+                    <input type="text" id="appointmentSearch" placeholder="Search Appointments..." onkeyup="searchAppointments()">
+                    <button class="add-button" onclick="window.location.href='{% url 'create_appointment' %}'">Add Appointment</button>
+                </div>
+                <h3>Appointment List</h3>
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Therapist</th>
+                            <th>Service</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appointmentTableBody">
+                        {% for appointment in appointments %}
+                        <tr>
+                            <td>{{ appointment.id }}</td>
+                            <td>{{ appointment.customer.name }}</td>
+                            <td>{{ appointment.therapist }}</td>
+                            <td>{{ appointment.service }}</td>
+                            <td>{{ appointment.date }}</td>
+                            <td>{{ appointment.status }}</td>
+                            <td>
+                                <button class="update-button" onclick="window.location.href='{% url 'update_appointment' appointment.pk %}'">Update</button>
+                                <button class="delete-button" onclick="window.location.href='{% url 'appointment_delete' appointment.pk %}'">Delete</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="content-section" style="display: none;">
+            <h1>Service Management <a href="/" class="logout-button" onclick="return confirmLogout()"><i class='bx bx-log-out'></i></a></h1>
+            <h2>Manage the Services</h2>
+            <div class="table-container">
+                <div class="search-container">
+                    <input type="text" id="serviceSearch" placeholder="Search Services..." onkeyup="searchServices()">
+                    <button class="add-button" onclick="window.location.href='{% url 'create_service' %}'">Add Service</button>
+                </div>
+                <h3>Service List</h3>
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Duration</th>
+                            <th>Price</th>
+                            <th>Image</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="serviceTableBody">
+                        {% for service in services %}
+                        <tr>
+                            <td>{{ service.id }}</td>
+                            <td>{{ service.name }}</td>
+                            <td>{{ service.description }}</td>
+                            <td>{{ service.duration }}</td>
+                            <td>{{ service.price }}</td>
+                            <td>{{ service.image }}</td>
+                            <td>
+                                <button class="update-button" onclick="window.location.href='{% url 'update_service' service.pk %}'">Update</button>
+                                <button class="delete-button" onclick="window.location.href='{% url 'service_delete' service.pk %}'">Delete</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Therapists Section -->
+        <section id="therapists" class="content-section" style="display: none;">
+            <h1>Therapist Management <a href="/" class="logout-button" onclick="return confirmLogout()"><i class='bx bx-log-out'></i></a></h1>
+            <h2>Manage the Therapists of the System</h2>
+            <div class="table-container">
+                <div class="search-container">
+                    <input type="text" id="therapistSearch" placeholder="Search Therapists..." onkeyup="searchTherapists()">
+                    <button class="add-button" onclick="window.location.href='{% url 'create_therapist' %}'">Add Therapist</button>
+                </div>
+                <h3>Therapist List</h3>
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Bio</th>
+                            <th>Max Daily Appointment</th>
+                            <th>Working Hours Start</th>
+                            <th>Working Hours End</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="therapistTableBody">
+                        {% for therapist in therapists %}
+                        <tr>
+                            <td>{{ therapist.id }}</td>
+                            <td>{{ therapist.name }}</td>
+                            <td>{{ therapist.description }}</td>
+                            <td>{{ therapist.max_daily_appointments }}</td>
+                            <td>{{ therapist.working_hours_start }}</td>
+                            <td>{{ therapist.working_hours_end }}</td>
+                            <td>
+                                <button class="update-button" onclick="window.location.href='{% url 'update_therapist' therapist.pk %}'">Update</button>
+                                <button class="delete-button" onclick="window.location.href='{% url 'therapist_delete' therapist.pk %}'">Delete</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Availability Section -->
+        <section id="availability" class="content-section" style="display: none;">
+            <h1>Therapist Availability Management <a href="/" class="logout-button" onclick="return confirmLogout()"><i class='bx bx-log-out'></i></a></h1>
+            <h2>Manage Therapist Availability</h2>
+            <div class="table-container">
+                <div class="search-container">
+                    <input type="text" id="availabilitySearch" placeholder="Search Therapists..." onkeyup="searchAvailability()">
+                    <button class="add-button" onclick="window.location.href='{% url 'create_availability' %}'">Add Availability</button>
+                </div>
+                <h3>Availability List</h3>
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Therapist Name</th>
+                            <th>Available Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                <tbody id="availabilityTableBody">
+                    {% for availability in availabilities %}
+                        <tr>
+                            <td>{{ availability.id }}</td>
+                            <td>{{ availability.therapist.name }}</td>
+                            <td>{{ availability.date }}</td>
+                            <td>
+                                <button class="update-button" onclick="window.location.href='{% url 'update_availability' availability.pk %}'">Update</button>
+                                <button class="delete-button" onclick="window.location.href='{% url 'availability_delete' availability.pk %}'">Delete</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="{% static 'js/admin.js' %}"></script>
+</body>
+</html>

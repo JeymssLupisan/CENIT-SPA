@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Therapist Availability</title>
+    <link rel="stylesheet" href="{% static 'css/booking.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Book Your Appointment</h1>
+            <p>Choose a therapist and a service to book your appointment.</p>
+            <button onclick="window.history.back()" class="btn btn-back"><i class='bx bx-left-arrow-alt'></i></button>
+        </header>
+        {% if messages %}
+            <div class="alert">
+                {% for message in messages %}
+                <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <section class="availability-section">
+            <h2>Today`s Available Therapists</h2>
+            <table class="availability-table">
+                <thead>
+                    <tr>
+                        <th>Therapist</th>
+                        <th>Current Bookings</th>
+                        <th>Remaining Slots</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for therapist_info in available_therapists %}
+                    <tr>
+                        <td>{{ therapist_info.therapist.name }}</td>
+                        <td>{{ therapist_info.current_bookings }}</td>
+                        <td>{{ therapist_info.remaining_slots }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="3">No available therapists for today.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <section class="booking-form-section">
+            <h2>Book an Appointment</h2>
+            <form method="POST" class="booking-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_therapist">Select Therapist</label>
+                    {{ form.therapist }}
+                </div>
+                <div class="form-group">
+                    <label for="id_service">Select Service</label>
+                    {{ form.service }}
+                </div>
+                <div class="form-group">
+                    <label for="id_date">Select Date & Time</label>
+                    <input type="datetime-local" id="id_date" name="date" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-submit">Book Appointment</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/add.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <title>Appointment Form</title>
+</head>
+{% block content %}
+    <div class="form-container">
+        <div class="header">
+            <h1>Appointment Form</h1>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();"><i class='bx bx-arrow-back'></i></a>
+        </div>
+        <p class="intro-text">Please fill in the details below to add a new appointment.</p>
+        {% if form.errors %}
+            <ul class="errors">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Save">
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr("input[name='date']", {
+            enableTime: true,
+            dateFormat: "Y-m-d H:i",
+            minDate: "today",
+        });
+    </script>
+{% endblock content %}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/service.css' %}">
+</head>
+<body>
+<header>
+    {% include 'app/navbar.html' %}
+</header>
+<div class="container">
+    <div class="service-wrapper">
+        <h1>Our Services</h1>
+<div class="cards">
+    <div class="card" onclick="openModal('stone')">
+        <h2>Stone Massage</h2>
+        <img src="{% static '/images/services/hollowb.jpg' %}" alt="Hollow Block Stone Massage">
+    </div>
+    <div class="card" onclick="openModal('facial')">
+        <h2>Facial Massage</h2>
+        <img src="{% static '/images/services/feet.jpg' %}" alt="Foot Facial Massage">
+    </div>
+    <div class="card" onclick="openModal('rolling')">
+        <h2>Rolling Pin Massage</h2>
+        <img src="{% static '/images/services/rollingpin.jpg' %}" alt="Rolling Pin Massage">
+    </div>
+    <div class="card" onclick="openModal('jackhammer')">
+        <h2>Jackhammer Shoulder Therapy</h2>
+        <img src="{% static '/images/services/jackhammer.jpg' %}" alt="Jackhammer Shoulder Therapy">
+    </div>
+    <div class="card" onclick="openModal('pacquiao')">
+        <h2>Pacquiao Punch Therapy</h2>
+        <img src="{% static '/images/services/pacquioa.jpg' %}" alt="Pacquiao Punch Therapy">
+    </div>
+    <div class="card" onclick="openModal('katinko')">
+        <h2>Katinko Eye Therapy</h2>
+        <img src="{% static '/images/services/katinko.jpg' %}" alt="Katinko Eye Therapy">
+    </div>
+</div>
+
+
+<div id="stone-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('stone')">&times;</span>
+        <h2>Stone Massage</h2>
+        <p>Experience the ultimate relaxation with our one-of-a-kind Hollow Block Stone Massage!</p>
+        <a href="/booking" class="cta-button">Book Now</a>
+    </div>
+</div>
+
+<div id="facial-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('facial')">&times;</span>
+        <h2>Facial Massage</h2>
+        <p>Step into ultimate relaxation with our Foot Facial Massage—literally!</p>
+        <a href="/booking" class="cta-button">Book Now</a>
+    </div>
+</div>
+
+<div id="rolling-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('rolling')">&times;</span>
+        <h2>Rolling Pin Massage</h2>
+        <p>Say goodbye to knots and hello to dough-like relaxation with our Rolling Pin Massage!</p>
+        <a href="/booking" class="cta-button">Book Now</a>
+    </div>
+</div>
+
+<div id="jackhammer-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('jackhammer')">&times;</span>
+        <h2>Jackhammer Shoulder Therapy</h2>
+        <p>Built up stress as solid as concrete? Try our Jackhammer Shoulder Therapy!</p>
+        <a href="/booking" class="cta-button">Book Now</a>
+    </div>
+</div>
+
+<div id="pacquiao-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('pacquiao')">&times;</span>
+        <h2>Pacquiao Punch Therapy</h2>
+        <p>Step into the ring of relaxation with our Pacquiao Punch Therapy! Let our therapists channel the Pambansang Kamao as they deliver gentle, rhythmic punches to your tired muscles. Don’t worry it’s all light taps, no knockouts!</p>
+        <a href="/booking" class="cta-button">Book Now</a>
+    </div>
+</div>
+
+<div id="katinko-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('katinko')">&times;</span>
+        <h2>Katinko Eye Therapy</h2>
+        <p>Get ready for the Katinko Eye Therapy, the only under-eye treatment that combines relaxation with an exhilarating menthol rush!</p>
+        <a href="/booking" class="cta-button">Book Now</a>
+    </div>
+</div>
+
+    </div>
+</div>
+<script src="{% static '/js/service.js' %}"></script>
+</body>
+</html>

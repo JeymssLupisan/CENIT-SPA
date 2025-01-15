@@ -1,6 +1,27 @@
-{% extends 'app/base.html' %}
+<!DOCTYPE html>
 {% load static %}
-{% block content%}
-<h1>HOME PAGE</h1>
-<img class="myLogo" src="{% static 'images/logo.png' %}">
-{% endblock content%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CENIT Spa - Home</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+<header>
+    {% include 'app/navbar.html' %}
+</header>
+
+<main class="hero-section">
+    <div class="hero-content">
+        <h1>Welcome to CENIT Spa</h1>
+        <p>
+            Relax and recharge at CENIT Spa, where your well-being comes first.
+            We offer soothing treatments designed to help you unwind and feel your best.
+        </p>
+        <a href="{% url 'booking_page' %}" class="btn-primary">Book a Massage Now</a>
+    </div>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/update.css' %}">
+    <title>Update Service</title>
+</head>
+
+{% block content %}
+  <div class="form-container">
+    <div class="header">
+      <h1>Update Service</h1>
+      <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();"><i class='bx bx-arrow-back'></i></a>
+    </div>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="name">Service Name:</label>
+        {{ form.name }}
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description:</label>
+        {{ form.description }}
+      </div>
+
+      <div class="form-group">
+        <label for="duration">Duration:</label>
+        {{ form.duration }}
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price:</label>
+        {{ form.price }}
+      </div>
+
+      <div class="form-group">
+        <label for="image">Image:</label>
+        {{ form.image }}
+      </div>
+
+      <div class="form-actions">
+        <button type="submit">Update Service</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Javascript -->
+  <script src="{% static '/js/validation.js' %}"></script>
+{% endblock %}

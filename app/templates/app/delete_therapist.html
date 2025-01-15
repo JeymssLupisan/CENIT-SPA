@@ -1,0 +1,35 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/delete.css' %}">
+    <title>Delete Therapist</title>
+</head>
+{% block content %}
+    <div class="overlay">
+        <div class="form-container">
+            <div class="header">
+                <h1>Deleting Therapist</h1>
+                <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();">
+                    <i class='bx bx-arrow-back'></i>
+                </a>
+            </div>
+            <p class="intro-text">Are you sure you want to delete "<strong>{{ therapist.name }}</strong>"?</p>
+            <div class="admin-info">
+                <p><strong>Max Daily Appointment:</strong> {{ therapist.max_daily_appointments }}</p>
+                <p><strong>Work Start:</strong> {{ therapist.working_hours_start }}</p>
+                <p><strong>Work End:</strong> {{ therapist.working_hours_end }}</p>
+                <p><strong>Bio:</strong> {{ therapist.description }}</p>
+            </div>
+            <form action="{% url 'therapist_delete' therapist.pk %}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Confirm" class="confirm-button">
+            </form>
+        </div>
+    </div>
+    <script>
+        function confirmBack() {
+            return confirm("Are you sure you want to go back? Any unsaved changes will be lost.");
+        }
+    </script>
+{% endblock content %}

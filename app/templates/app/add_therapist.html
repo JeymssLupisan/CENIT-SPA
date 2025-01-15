@@ -1,0 +1,75 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/add.css' %}">
+    <title>Therapist Form</title>
+</head>
+{% block content %}
+    <div class="form-container">
+        <div class="header">
+            <h1>Therapist Form</h1>
+            <a href="{% url 'database' %}" class="back-button" onclick="return confirmBack();"><i class='bx bx-arrow-back'></i></a>
+        </div>
+        <p class="intro-text">Please fill in the details below to add a new therapist.</p>
+        <form id="adminForm" action="{% url 'create_therapist' %}" method="post" enctype="multipart/form-data" onsubmit="return validateForm();">
+            {% csrf_token %}
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            {% for error in form.name.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="max_daily_appointments">Max Daily Appointment:</label>
+            <input type="number" id="max_daily_appointments" name="max_daily_appointments" placeholder="Maximum of 5">
+            {% for error in form.max_daily_appointments.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="working_hours_start">Work Start:</label>
+            <input type="text" id="working_hours_start" name="working_hours_start" placeholder="Start at 08:00:00">
+            {% for error in form.working_hours_start.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="working_hours_end">Work End:</label>
+            <input type="text" id="working_hours_end" name="working_hours_end"  placeholder="End at 17:00:00">
+            {% for error in form.working_hours_end.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+
+            <label for="description">Bio:</label>
+            <textarea id="description" name="description" rows="4" placeholder="Write a brief bio..."></textarea>
+            {% for error in form.description.errors %}
+            <small style="color: red">{{ error }}</small>
+            {% endfor %}
+            <input type="submit" value="Save">
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            var maxDailyAppointments = document.getElementById("max_daily_appointments").value;
+            var workStart = document.getElementById("working_hours_start").value;
+            var workEnd = document.getElementById("working_hours_end").value;
+
+            if (maxDailyAppointments < 5 || maxDailyAppointments > 5) {
+                alert("Maximum daily appointments must be 5.");
+                return false;
+            }
+
+            if (workStart !== "08:00:00") {
+                alert("Work start time must be exactly 08:00:00.");
+                return false;
+            }
+
+            if (workEnd !== "17:00:00") {
+                alert("Work end time must be exactly 17:00:00.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+{% endblock content %}
