@@ -1,8 +1,10 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 from.views import(BasePageView, AdminPageView, HomePageView, ContactPageView, AboutPageView, ServicesPageView,
                   AdminCreateView, UserCreateView, AppointmentCreateView, ServiceCreateView, TherapistCreateView,
-                  AvailabilityCreateView,
+                  AvailabilityCreateView, ServiceListView, ServiceDetailView,
                   AdminDeleteView, UserDeleteView, AppointmentDeleteView, ServiceDeleteView, TherapistDeleteView,
                   AvailabilityDeleteView,
                   AdminUpdateView, UserUpdateView, AppointmentUpdateView, ServiceUpdateView, TherapistUpdateView,
@@ -11,6 +13,8 @@ from.views import(BasePageView, AdminPageView, HomePageView, ContactPageView, Ab
 urlpatterns = [
     path('', BasePageView.as_view(), name='base'),
     path('home/', HomePageView.as_view(), name='home'),
+    path('serviceview/', ServiceListView.as_view(), name='service_view'),
+    path('detail_view/<int:pk>', ServiceDetailView.as_view(), name='detail_view'),
     path('about/', AboutPageView.as_view(), name='about'),
     path('service/', ServicesPageView.as_view(), name='service'),
     path('contact/', ContactPageView.as_view(), name='contact'),
@@ -46,3 +50,6 @@ urlpatterns = [
     path('dbavailability/<int:pk>/delete', AvailabilityDeleteView.as_view(), name='availability_delete'),
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

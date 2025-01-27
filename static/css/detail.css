@@ -1,0 +1,93 @@
+/* detail.css */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.offers {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.offer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.offer-header h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #213A57;
+}
+
+.back-button {
+    color: #DDB5A1;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    color: #321B11;
+}
+
+.offers img {
+    width: 300px;  /* Fixed width of 300px */
+    height: 300px; /* Fixed height of 300px */
+    object-fit: cover; /* Ensures the image maintains aspect ratio */
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.offers p {
+    font-size: 1.1rem;
+    color: #321B11;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.offers .price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #FFAA4C;
+}
+
+.offers .duration {
+    color: #DDB5A1;
+}
+
+.offers .description {
+    font-style: italic;
+    color: #213A57;
+}
+
+@media screen and (max-width: 768px) {
+    .offers {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .offer-header h2 {
+        font-size: 20px;
+    }
+
+    .offers p {
+        font-size: 1rem;
+    }
+
+    .offers img {
+        width: 250px;  /* Adjusted for smaller devices */
+        height: 250px;
+    }
+}

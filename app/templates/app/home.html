@@ -13,13 +13,24 @@
 </header>
 
 <main class="hero-section">
+    <h1>Welcome to CENIT Spa</h1>
     <div class="hero-content">
-        <h1>Welcome to CENIT Spa</h1>
-        <p>
-            Relax and recharge at CENIT Spa, where your well-being comes first.
-            We offer soothing treatments designed to help you unwind and feel your best.
-        </p>
-        <a href="{% url 'booking_page' %}" class="btn-primary">Book a Massage Now</a>
+        <div class="left-box">
+            <p>
+                Relax and recharge at CENIT Spa, where your well being is our top priority.
+                Immerse yourself in a serene environment designed to help you escape the
+                stress of daily life and rejuvenate your mind and body. From calming massages
+                to revitalizing treatments, we provide a personalized experience tailored to
+                leave you feeling refreshed, relaxed, and renewed.
+            </p>
+                <a href="{% url 'booking_page' %}" class="btn-primary">Book a Massage Now</a>
+        </div>
+        <div class="right-box">
+            <h2>Our Services Details</h2>
+            {% for service in services %}
+            <a href="{% url 'detail_view' service.pk %}">{{ service.name }}</a>
+            {% endfor %}
+        </div>
     </div>
 </main>
 

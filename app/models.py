@@ -31,7 +31,7 @@ class Service(models.Model):
     description = models.TextField()
     duration = models.DurationField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    image = models.ImageField(upload_to='services/', null=True, blank=True)
+    image = models.ImageField(upload_to='images/service', null=True, blank=True)
 
     def __str__(self):
         return self.name

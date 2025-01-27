@@ -7,7 +7,7 @@ from datetime import datetime
 from django.db import transaction
 from django.http import JsonResponse
 from .models import Admin, Customer, Appointment, Service, Therapist, Availability
-from django.views.generic import TemplateView, CreateView, DeleteView, UpdateView
+from django.views.generic import TemplateView, CreateView, DeleteView, UpdateView, ListView, DetailView
 from .forms import (AppointmentForm, AvailabilityForm, ServiceForm, TherapistForm, AvailabilityForm2,
                     CustomerAppointmentForm, RescheduleForm)
 from django.utils import timezone
@@ -19,6 +19,28 @@ class BasePageView(TemplateView):
 
 class HomePageView(TemplateView):
     template_name = 'app/home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['services'] = Service.objects.all()
+        return context
+
+
+class ServiceListView(ListView):
+    model = Service
+    context_object_name = 'services'
+    template_name = 'app/home.html'
+
+
+class ServiceDetailView(DetailView):
+    model = Service
+    context_object_name = 'service'
+    template_name = 'app/detail_view.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['services'] = Service.objects.all()
+        return context
 
 
 class AboutPageView(TemplateView):
@@ -443,3 +465,4 @@ def account_settings(request):
         'customer': customer,
         'appointments': appointments
     })
+

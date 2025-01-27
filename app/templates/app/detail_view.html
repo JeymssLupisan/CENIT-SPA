@@ -1,0 +1,25 @@
+{% load static %}
+<head>
+    <link rel="icon" type="image/jpg" href="{% static '/images/navbar/SuiteDreams.png' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/detail.css' %}">
+    <title>Detail View</title>
+</head>
+<div class="offers">
+    <div class="offer-header">
+        <h2>Offer Details</h2>
+        <a href="{% url 'home' %}" class="back-button" onclick="return confirmBack();">
+            <i class="ri-close-line"></i>
+        </a>
+    </div>
+    {% if service.image %}
+        <img src="{{ service.image.url }}" alt="{{ service.name }}">
+    {% else %}
+        <p>No Image Available</p>
+    {% endif %}
+    <p class="service-name">Name: {{ service.name }}</p>
+    <p class="service-description">Description: {{ service.description }}</p>
+    <p class="service-duration">Duration: {{ service.duration }} minutes</p>
+    <p class="price">Price: {{ service.price }}</p>
+</div>
